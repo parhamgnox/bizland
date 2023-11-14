@@ -5,6 +5,7 @@ from accounts.models import CustomeUser
 from .forms import ContactUsForm , NewsLetterForm
 from django.contrib import messages
 
+
 def home(request):
     if request.method == 'GET':
     
