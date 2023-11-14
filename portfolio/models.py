@@ -1,6 +1,6 @@
 from django.db import models
 import datetime
-
+from accounts.models import CustomeUser
 
 
 class Category(models.Model):
@@ -17,7 +17,7 @@ class Skills(models.Model):
     
 
 class Team_Members(models.Model):
-    info = models.CharField(max_length=90)
+    info = models.ForeignKey(CustomeUser,on_delete=models.CASCADE)
     skills = models.ForeignKey(Skills,on_delete=models.CASCADE)
     description = models.TextField()
     image = models.ImageField(upload_to='team_members',default='teacher.png')
@@ -34,8 +34,6 @@ class Team_Members(models.Model):
 
 class Portfolio(models.Model):
     image = models.ImageField(upload_to='portfolio',default='default.png')
-    image_2 = models.ImageField(upload_to='portfolio',default='default.png')
-    image_3 = models.ImageField(upload_to='portfolio',default='default.png')
     title = models.CharField(max_length=90)
     category = models.ManyToManyField(Category)
     content = models.TextField()
